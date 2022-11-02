@@ -1,0 +1,57 @@
+
+# data_dir: "/dta/llx/data/mobileV1-YoloV3/testdata/face_aibox/"
+# exp_dir: "/raid/lulixin/yolov3_face_detect/experiment-AiBox-Face-pretrain-model-mbv1-0.25-20220815/"
+
+# change
+data_dir: "./tf_record/Apple_221019/"
+
+# change
+exp_dir: "./models/experiment-AiBox-Apple-model-mbv1-0.25-20221102/"
+
+# yolov3 arguments
+img_height: 512
+img_width: 512
+num_channels: 3
+
+# change
+# num_classes: 4
+num_classes: 1
+
+
+# the number of bounding box 
+num_object: 3   
+
+grid_height: 16
+grid_width: 16
+anchors: [169.54, 131.54, 228.0, 289.38, 545.15, 476.46, 43.85, 89.15, 90.62, 65.77, 86.23, 173.92, 14.62, 19.0, 23.38, 43.85, 48.23, 33.62]
+random_flip: True
+# random_jitter_box: True
+random_jitter_box: False
+random_crop: False
+random_distort_color: True
+
+# Train arguments
+max_number_of_steps: 700000 #700000
+train_img_num: 149396
+batch_size: 32
+gpus: "2, 3"
+
+# change
+# resume: True
+resume: False
+
+# change
+depth_multiplier: 0.25
+# depth_multiplier: 0.5
+
+learning_rate: 0.0001
+weight_decay: 0.0005
+# pretrained_path : "path to pretrained model. eg: /dta/dell/Dataset/scooter_data/Pretrained_model/imagenet_pretrained_models/pretrained-models/mobilenet_v1_0.25_192/mobilenet_v1_0.25_192.ckpt"
+# pretrained_path : "/dta/llx/yolov3/pre_model/model.ckpt-118416"
+# pretrained_path : "/raid/lulixin/yolov3_face_detect/experiment-AiBox-Beijing-20220317_donot_aug/model.ckpt-103300"
+pretrained_path : "./imagenet_pretrained_models/pretrained-models/mobilenet_v1_0.25_192/mobilenet_v1_0.25_192.ckpt"
+
+quantize: False
+# quantize: True
+quant_delay: 0
+save_interval_secs: 1800

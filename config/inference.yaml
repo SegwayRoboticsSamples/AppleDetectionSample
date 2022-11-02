@@ -1,0 +1,117 @@
+# Directories arguments
+# test_img_folder: "path to testet. eg: /dta/yanx/Dataset/show_videos"
+# frozen_model_sidewalk_filename : 'path to model. eg: ./history_model/frozen_eval_graph-139614-51059-sidewalk.pb'
+# frozen_model_road_filename : 'path to model. eg: ./best_distillation_float_model_folder/frozen_eval_graph-1544000-145764.pb'
+# frozen_model_pen_filename : 'path to model. eg: ./yolov3_mobilenetv1/frozen_eval_graph_697407.pb'
+# output_dir :'path to imwrite output. eg: ./res_rec-evt-06-30-show_videos'
+
+# change
+tflite_mode_path: "./best_distillation_float_model_folder/frozen_eval_apple_graph-571130.tflite"
+
+# change
+test_img_folder: "/raid/data/object_detect/Apple_221019/test" 
+
+# data_dir: "/dta/llx/data/mobileV1-YoloV3/testdata/person_aibox_donot_aug/"
+
+lite_model_pen_filename : './best_distillation_float_model_folder/float-mbV1yoloV3-0.25-1task-697407-Aug-PretrainCoco-pedestrian111.tflite'
+frozen_model_sidewalk_filename : './best_distillation_float_model_folder/frozen_eval_graph-6250-200.pb'
+frozen_model_road_filename : './best_distillation_float_model_folder/frozen_eval_graph-6250-200.pb'
+frozen_model_pen_filename : './best_distillation_float_model_folder/frozen_eval_bikeRack_graph-114041.pb'
+
+# change
+output_dir : "./result_apple"
+
+
+#data preprocess
+r_mean: 105.5311
+g_mean: 104.6172
+b_mean: 105.787
+standard_deviation_reciprocal: 0.0134
+quantize : False
+
+#config abdout preprocess
+normalize : True
+
+#config about network
+net_input_h : 512
+net_input_w : 512
+
+transform_to_birdview : True
+straight_line_fitting : True
+birdview_max_x: 1000
+birdview_max_y: 600
+birdview_min_x: 0
+birdview_min_y: -200
+roadside_heatmap_shrink_factor : 2
+
+#config about data post process
+bird_w_crop : 600
+bird_h_crop : 400
+
+#config about device
+gpus : '3'
+deploy_mode : 't60lite'
+seg_button : False
+pen_button : True
+enable_person_count: True
+person_heatmap_shrink_rate: 1
+person_heatmap_max_value: 254
+person_key_points_num: 1
+need_take_sigmoid: False
+use_l2_supervise: True
+
+# change (apple)
+class_num: 1
+
+get_database_data: False
+custom_database_folder: '/dta/dell/remote'
+database_data_time_filter_start : '2019-01-27 00:23:29'
+database_data_time_filter_end : '2021-04-27 00:23:29'
+database_data_time_filter : '2020-04-27 00:23:29'
+data_family: 'testing'
+front_mask_border_pt_idx: [85, 223, 77535, 77563, 184571, 184543, 261855, 261717] #small fov,modify at 2020-3-13
+front_mask_border_pts_large_fov: [113, 233, 85225, 85241, 176889, 176873, 261865, 261745] #large fov, modify at 2020-4-29
+front_mask_border_pts_large_fov_1005: [147, 261, 76037, 76075, 186155, 186117, 261893, 261779] #large fov 1005, modify at 2020-7-17
+front_mask_border_pts_large_fov_1007: [126, 238, 77038, 77093, 185125, 185070, 261870, 261758] #large fov 1005, modify at 2020-7-17
+front_mask_border_pts_large_fov_1008: [375, 465, 585, 540] #large fov 1005, modify at 2020-7-17
+front_mask_border_pts_large_fov_2000: [0, 233, 94953, 95001, 167193, 167145, 261865, 261632] #large fov 1005, modify at 2020-7-17
+
+front_mask_border_pt_idx_post_process: [82, 226, 76002, 76030, 186110, 186082, 261858, 261714] #small fov,modify at 2020-3-13
+front_mask_border_pts_post_process_large_fov: [110, 236, 83692, 83708, 178428, 178412, 261868, 261742] #large fov, modify at 2020-4-29
+front_mask_border_pts_post_process_large_fov_1005: [144, 264, 74504, 74542, 187694, 187656, 261896, 261776] #large fov 1005, modify at 2020-7-17
+front_mask_border_pts_post_process_large_fov_1007: [123, 241, 75505, 75560, 186664, 186609, 261873, 261755] #large fov 1005, modify at 2020-7-17
+front_mask_border_pts_post_process_large_fov_2000: [0, 236, 93420, 93468, 168732, 168684, 261868, 261632] #large fov 1005, modify at 2020-7-17
+
+# yolov3 arguments
+img_height: 512
+img_width: 512
+grid_h: 16
+grid_w: 16
+num_object: 3
+
+# change
+classes: 1
+
+conf_thresh: 0.3
+class_thresh: 0.5
+nms_thresh: 0.3
+filter_scale: 0.3
+anchors: [169.54, 131.54, 228.0, 289.38, 545.15, 476.46, 43.85, 89.15, 90.62, 65.77, 86.23, 173.92, 14.62, 19.0, 23.38, 43.85, 48.23, 33.62]
+
+# change
+# class_names: ["apple"]
+
+distor_lite: [275.543825, 273.041509, 482.351164, 270.168540, 0.994796]
+h_lite: [5.76677149e-01, -6.34594425e-03, -1.51908185e+02, 1.25732169e-02,  3.03323585e-01, -8.06119408e+01, -9.70264761e-04, -3.88964426e-05,  1.00000000e+00]
+
+batch_size: 1
+random_flip: True
+random_jitter_box: True
+random_crop: False
+random_distort_color: True
+
+pedes_dis_debug: False
+pedes_conf_debug: False
+no_filter_debug: False
+
+valid_person_radius: 800

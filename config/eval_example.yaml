@@ -1,0 +1,25 @@
+# Directories arguments
+data_dir: "/dta/dell/Dataset/MobileV1-YoloV3/ValData/20190427_20210127_crop_rotate_512_15423_val.tfrecord"
+exp_dir: "./yolov3_test/"
+# yolov3 arguments
+img_height: 512
+img_width: 512
+num_channels: 3
+num_classes: 1
+num_object: 3
+grid_height: 16
+grid_width: 16
+anchors: [169.54, 131.54, 228.0, 289.38, 545.15, 476.46, 43.85, 89.15, 90.62, 65.77, 86.23, 173.92, 14.62, 19.0, 23.38, 43.85, 48.23, 33.62]
+random_flip: True
+random_jitter_box: True
+random_crop: False
+random_distort_color: True
+
+# Train arguments
+max_number_of_steps: 15000
+batch_size: 1
+gpus: "1"
+depth_multiplier: 0.25
+test_model: model.ckpt-11985
+quantize: FALSE
+epoch_range: 5
