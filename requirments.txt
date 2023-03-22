@@ -1,5 +1,4 @@
 pillow
 pyyaml
-tensorflow-gpu==1.10.0
 contextlib2
 opencv-python
